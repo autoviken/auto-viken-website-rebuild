@@ -9,8 +9,50 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SelgDinBilRouteImport } from './routes/selg-din-bil'
+import { Route as ReklamasjonRouteImport } from './routes/reklamasjon'
+import { Route as OmOssRouteImport } from './routes/om-oss'
+import { Route as KundeomtalerRouteImport } from './routes/kundeomtaler'
+import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as FinansieringRouteImport } from './routes/finansiering'
+import { Route as BilutvalgRouteImport } from './routes/bilutvalg'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SelgDinBilRoute = SelgDinBilRouteImport.update({
+  id: '/selg-din-bil',
+  path: '/selg-din-bil',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReklamasjonRoute = ReklamasjonRouteImport.update({
+  id: '/reklamasjon',
+  path: '/reklamasjon',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OmOssRoute = OmOssRouteImport.update({
+  id: '/om-oss',
+  path: '/om-oss',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KundeomtalerRoute = KundeomtalerRouteImport.update({
+  id: '/kundeomtaler',
+  path: '/kundeomtaler',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinansieringRoute = FinansieringRouteImport.update({
+  id: '/finansiering',
+  path: '/finansiering',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BilutvalgRoute = BilutvalgRouteImport.update({
+  id: '/bilutvalg',
+  path: '/bilutvalg',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +61,130 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bilutvalg': typeof BilutvalgRoute
+  '/finansiering': typeof FinansieringRoute
+  '/kontakt': typeof KontaktRoute
+  '/kundeomtaler': typeof KundeomtalerRoute
+  '/om-oss': typeof OmOssRoute
+  '/reklamasjon': typeof ReklamasjonRoute
+  '/selg-din-bil': typeof SelgDinBilRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bilutvalg': typeof BilutvalgRoute
+  '/finansiering': typeof FinansieringRoute
+  '/kontakt': typeof KontaktRoute
+  '/kundeomtaler': typeof KundeomtalerRoute
+  '/om-oss': typeof OmOssRoute
+  '/reklamasjon': typeof ReklamasjonRoute
+  '/selg-din-bil': typeof SelgDinBilRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bilutvalg': typeof BilutvalgRoute
+  '/finansiering': typeof FinansieringRoute
+  '/kontakt': typeof KontaktRoute
+  '/kundeomtaler': typeof KundeomtalerRoute
+  '/om-oss': typeof OmOssRoute
+  '/reklamasjon': typeof ReklamasjonRoute
+  '/selg-din-bil': typeof SelgDinBilRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/bilutvalg'
+    | '/finansiering'
+    | '/kontakt'
+    | '/kundeomtaler'
+    | '/om-oss'
+    | '/reklamasjon'
+    | '/selg-din-bil'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/bilutvalg'
+    | '/finansiering'
+    | '/kontakt'
+    | '/kundeomtaler'
+    | '/om-oss'
+    | '/reklamasjon'
+    | '/selg-din-bil'
+  id:
+    | '__root__'
+    | '/'
+    | '/bilutvalg'
+    | '/finansiering'
+    | '/kontakt'
+    | '/kundeomtaler'
+    | '/om-oss'
+    | '/reklamasjon'
+    | '/selg-din-bil'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BilutvalgRoute: typeof BilutvalgRoute
+  FinansieringRoute: typeof FinansieringRoute
+  KontaktRoute: typeof KontaktRoute
+  KundeomtalerRoute: typeof KundeomtalerRoute
+  OmOssRoute: typeof OmOssRoute
+  ReklamasjonRoute: typeof ReklamasjonRoute
+  SelgDinBilRoute: typeof SelgDinBilRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/selg-din-bil': {
+      id: '/selg-din-bil'
+      path: '/selg-din-bil'
+      fullPath: '/selg-din-bil'
+      preLoaderRoute: typeof SelgDinBilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reklamasjon': {
+      id: '/reklamasjon'
+      path: '/reklamasjon'
+      fullPath: '/reklamasjon'
+      preLoaderRoute: typeof ReklamasjonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/om-oss': {
+      id: '/om-oss'
+      path: '/om-oss'
+      fullPath: '/om-oss'
+      preLoaderRoute: typeof OmOssRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kundeomtaler': {
+      id: '/kundeomtaler'
+      path: '/kundeomtaler'
+      fullPath: '/kundeomtaler'
+      preLoaderRoute: typeof KundeomtalerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finansiering': {
+      id: '/finansiering'
+      path: '/finansiering'
+      fullPath: '/finansiering'
+      preLoaderRoute: typeof FinansieringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bilutvalg': {
+      id: '/bilutvalg'
+      path: '/bilutvalg'
+      fullPath: '/bilutvalg'
+      preLoaderRoute: typeof BilutvalgRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +197,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BilutvalgRoute: BilutvalgRoute,
+  FinansieringRoute: FinansieringRoute,
+  KontaktRoute: KontaktRoute,
+  KundeomtalerRoute: KundeomtalerRoute,
+  OmOssRoute: OmOssRoute,
+  ReklamasjonRoute: ReklamasjonRoute,
+  SelgDinBilRoute: SelgDinBilRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
