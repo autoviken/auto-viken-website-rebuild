@@ -27,11 +27,14 @@ function OmOssPage() {
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-2xl">
             <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">Om oss</p>
-            <h1 className="text-4xl font-bold tracking-tight md:text-5xl">Lidenskap for bil siden 2003</h1>
+            <h1 className="text-4xl font-bold tracking-tight md:text-5xl">Hos Auto Viken AS drives vi av en ekte lidenskap for bil og gode kundeopplevelser.</h1>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Auto Viken AS ble grunnlagt med én enkel visjon: å tilby kvalitetsbiler med personlig service. 
-              Vi holder til i Verpetveien 50 i Vestby, og har i over 20 år hjulpet tusenvis av kunder med 
-              å finne sin drømmebil.
+              Vår visjon er enkel: å tilby kvalitetsbiler kombinert med personlig og trygg service.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              Vi holder til i Verpetveien 50 i Vestby, hvor vi hver dag hjelper kunder med å finne 
+              bilen som passer deres behov og ønsker. Med solid erfaring og et sterkt fokus på 
+              kvalitet, gjør vi bilkjøpet til en enkel og god opplevelse.
             </p>
           </motion.div>
         </div>
