@@ -45,7 +45,7 @@ function OmOssPage() {
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="grid gap-8 md:grid-cols-3">
             {[
-              { icon: Calendar, title: "20+ års erfaring", desc: "Solid erfaring innen bruktbilbransjen gir trygghet i hvert kjøp og salg." },
+              { icon: Calendar, title: "Erfaring som gir trygghet.", desc: "Lang erfaring i bruktbilbransjen sikrer kvalitet og trygghet i hver handel." },
               { icon: Users, title: "Personlig oppfølging", desc: "Hos oss er du ikke bare et kundenummer. Vi tar oss tid til hver enkelt kunde." },
               { icon: MapPin, title: "Sentralt i Vestby", desc: "Lett tilgjengelig beliggenhet ved E6, med god parkering og innendørs visningslokale." },
             ].map((item, i) => (
