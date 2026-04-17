@@ -2,6 +2,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/auto-viken-logo.jpg";
 
 const navLinks = [
   { to: "/", label: "Hjem" },
@@ -23,7 +24,7 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:px-8">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold tracking-tight text-primary">AUTO&nbsp;VIKEN</span>
+          <img src={logo} alt="Auto Viken AS" className="h-9 w-auto" />
         </Link>
 
         {/* Desktop nav */}
