@@ -62,6 +62,42 @@ function FinansieringPage() {
         </div>
       </section>
 
+      {/* Partners */}
+      <section className="py-20">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center">
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary">Våre partnere</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight">Vi samarbeider med Norges ledende banker</h2>
+            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+              Gjennom våre finanspartnere sikrer vi deg gode betingelser og rask behandling.
+            </p>
+          </motion.div>
+
+          <motion.ul
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4"
+          >
+            {[
+              { name: "Brage Finans", short: "Brage" },
+              { name: "Santander Consumer Bank", short: "Santander" },
+              { name: "SpareBank 1", short: "SpareBank 1" },
+              { name: "Nordea", short: "Nordea" },
+            ].map((p) => (
+              <li
+                key={p.name}
+                className="flex h-24 items-center justify-center rounded-xl border border-border bg-card px-6 text-center transition-colors hover:border-primary/40"
+                title={p.name}
+              >
+                <span className="text-lg font-bold tracking-tight text-foreground">{p.short}</span>
+              </li>
+            ))}
+          </motion.ul>
+        </div>
+      </section>
+
       {/* How it works */}
       <section className="py-24">
         <div className="mx-auto max-w-3xl px-4 lg:px-8">

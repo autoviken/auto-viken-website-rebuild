@@ -10,8 +10,6 @@ const navLinks = [
   { to: "/selg-din-bil", label: "Selg din bil" },
   { to: "/finansiering", label: "Finansiering" },
   { to: "/om-oss", label: "Om oss" },
-  { to: "/kundeomtaler", label: "Kundeomtaler" },
-  { to: "/reklamasjon", label: "Reklamasjon" },
   { to: "/kontakt", label: "Kontakt" },
 ] as const;
 

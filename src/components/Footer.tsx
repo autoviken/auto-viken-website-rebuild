@@ -23,7 +23,7 @@ export function Footer() {
                 { to: "/selg-din-bil", label: "Selg din bil" },
                 { to: "/finansiering", label: "Finansiering" },
                 { to: "/om-oss", label: "Om oss" },
-                { to: "/kundeomtaler", label: "Kundeomtaler" },
+                { to: "/kontakt", label: "Kontakt" },
               ].map((link) => (
                 <li key={link.to}>
                   <Link to={link.to} className="transition-colors hover:text-primary">

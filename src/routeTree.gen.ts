@@ -10,9 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SelgDinBilRouteImport } from './routes/selg-din-bil'
-import { Route as ReklamasjonRouteImport } from './routes/reklamasjon'
 import { Route as OmOssRouteImport } from './routes/om-oss'
-import { Route as KundeomtalerRouteImport } from './routes/kundeomtaler'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as FinansieringRouteImport } from './routes/finansiering'
 import { Route as BilutvalgRouteImport } from './routes/bilutvalg'
@@ -23,19 +21,9 @@ const SelgDinBilRoute = SelgDinBilRouteImport.update({
   path: '/selg-din-bil',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ReklamasjonRoute = ReklamasjonRouteImport.update({
-  id: '/reklamasjon',
-  path: '/reklamasjon',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const OmOssRoute = OmOssRouteImport.update({
   id: '/om-oss',
   path: '/om-oss',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const KundeomtalerRoute = KundeomtalerRouteImport.update({
-  id: '/kundeomtaler',
-  path: '/kundeomtaler',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KontaktRoute = KontaktRouteImport.update({
@@ -64,9 +52,7 @@ export interface FileRoutesByFullPath {
   '/bilutvalg': typeof BilutvalgRoute
   '/finansiering': typeof FinansieringRoute
   '/kontakt': typeof KontaktRoute
-  '/kundeomtaler': typeof KundeomtalerRoute
   '/om-oss': typeof OmOssRoute
-  '/reklamasjon': typeof ReklamasjonRoute
   '/selg-din-bil': typeof SelgDinBilRoute
 }
 export interface FileRoutesByTo {
@@ -74,9 +60,7 @@ export interface FileRoutesByTo {
   '/bilutvalg': typeof BilutvalgRoute
   '/finansiering': typeof FinansieringRoute
   '/kontakt': typeof KontaktRoute
-  '/kundeomtaler': typeof KundeomtalerRoute
   '/om-oss': typeof OmOssRoute
-  '/reklamasjon': typeof ReklamasjonRoute
   '/selg-din-bil': typeof SelgDinBilRoute
 }
 export interface FileRoutesById {
@@ -85,9 +69,7 @@ export interface FileRoutesById {
   '/bilutvalg': typeof BilutvalgRoute
   '/finansiering': typeof FinansieringRoute
   '/kontakt': typeof KontaktRoute
-  '/kundeomtaler': typeof KundeomtalerRoute
   '/om-oss': typeof OmOssRoute
-  '/reklamasjon': typeof ReklamasjonRoute
   '/selg-din-bil': typeof SelgDinBilRoute
 }
 export interface FileRouteTypes {
@@ -97,9 +79,7 @@ export interface FileRouteTypes {
     | '/bilutvalg'
     | '/finansiering'
     | '/kontakt'
-    | '/kundeomtaler'
     | '/om-oss'
-    | '/reklamasjon'
     | '/selg-din-bil'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -107,9 +87,7 @@ export interface FileRouteTypes {
     | '/bilutvalg'
     | '/finansiering'
     | '/kontakt'
-    | '/kundeomtaler'
     | '/om-oss'
-    | '/reklamasjon'
     | '/selg-din-bil'
   id:
     | '__root__'
@@ -117,9 +95,7 @@ export interface FileRouteTypes {
     | '/bilutvalg'
     | '/finansiering'
     | '/kontakt'
-    | '/kundeomtaler'
     | '/om-oss'
-    | '/reklamasjon'
     | '/selg-din-bil'
   fileRoutesById: FileRoutesById
 }
@@ -128,9 +104,7 @@ export interface RootRouteChildren {
   BilutvalgRoute: typeof BilutvalgRoute
   FinansieringRoute: typeof FinansieringRoute
   KontaktRoute: typeof KontaktRoute
-  KundeomtalerRoute: typeof KundeomtalerRoute
   OmOssRoute: typeof OmOssRoute
-  ReklamasjonRoute: typeof ReklamasjonRoute
   SelgDinBilRoute: typeof SelgDinBilRoute
 }
 
@@ -143,25 +117,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SelgDinBilRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/reklamasjon': {
-      id: '/reklamasjon'
-      path: '/reklamasjon'
-      fullPath: '/reklamasjon'
-      preLoaderRoute: typeof ReklamasjonRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/om-oss': {
       id: '/om-oss'
       path: '/om-oss'
       fullPath: '/om-oss'
       preLoaderRoute: typeof OmOssRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/kundeomtaler': {
-      id: '/kundeomtaler'
-      path: '/kundeomtaler'
-      fullPath: '/kundeomtaler'
-      preLoaderRoute: typeof KundeomtalerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kontakt': {
@@ -200,9 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   BilutvalgRoute: BilutvalgRoute,
   FinansieringRoute: FinansieringRoute,
   KontaktRoute: KontaktRoute,
-  KundeomtalerRoute: KundeomtalerRoute,
   OmOssRoute: OmOssRoute,
-  ReklamasjonRoute: ReklamasjonRoute,
   SelgDinBilRoute: SelgDinBilRoute,
 }
 export const routeTree = rootRouteImport
