@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import logo from "@/assets/auto-viken-logo.jpg";
 
 export function Footer() {
   return (
@@ -8,7 +9,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
-            <span className="text-xl font-bold tracking-tight text-primary">AUTO&nbsp;VIKEN</span>
+            <img src={logo} alt="Auto Viken AS" className="h-12 w-auto rounded-md" />
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               Kjøp – Salg – Kommisjon. Din pålitelige bilforhandler i Vestby siden 2003.
             </p>
