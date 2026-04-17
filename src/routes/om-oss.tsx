@@ -29,7 +29,9 @@ function OmOssPage() {
             <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">Om oss</p>
             <h1 className="text-4xl font-bold tracking-tight md:text-5xl">Hos Auto Viken AS drives vi av en ekte lidenskap for bil og gode kundeopplevelser.</h1>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Vår visjon er enkel: å tilby kvalitetsbiler kombinert med personlig og trygg service. 
+              Vår visjon er enkel: å tilby kvalitetsbiler kombinert med personlig og trygg service.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
               Vi holder til i Verpetveien 50 i Vestby, hvor vi hver dag hjelper kunder med å finne 
               bilen som passer deres behov og ønsker. Med solid erfaring og et sterkt fokus på 
               kvalitet, gjør vi bilkjøpet til en enkel og god opplevelse.
