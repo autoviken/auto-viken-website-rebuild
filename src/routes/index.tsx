@@ -59,26 +59,26 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Featured Cars — live fra Autonet */}
-      <section className="py-24">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-10 text-center">
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Utvalgte biler</h2>
-            <p className="mt-3 text-muted-foreground">Direkte fra vårt lager — oppdatert i sanntid</p>
+      {/* Find biler — CTA til bilutvalg */}
+      <section className="py-20">
+        <div className="mx-auto max-w-3xl px-4 text-center lg:px-8">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary">Vårt utvalg</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">Finn din neste bil</h2>
+            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+              Hele vårt oppdaterte lager — med bilder, pris og spesifikasjoner — finner du under{" "}
+              <Link to="/bilutvalg" className="font-medium text-primary hover:underline">Bilutvalg</Link>.
+              Du er også hjertelig velkommen innom oss i Verpetveien 50, 1543 Vestby for en uforpliktende prat og prøvekjøring.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <Link to="/bilutvalg" className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
+                Se bilutvalget <ArrowRight className="h-4 w-4" />
+              </Link>
+              <a href="tel:+4764982450" className="inline-flex items-center gap-2 rounded-md border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-accent">
+                Ring oss
+              </a>
+            </div>
           </motion.div>
-          <div className="overflow-hidden rounded-xl border border-border bg-card">
-            <iframe
-              src="https://autovikenas.autonet.no"
-              title="Auto Viken utvalgte biler"
-              className="block w-full"
-              style={{ border: "none", height: "720px" }}
-            />
-          </div>
-          <div className="mt-8 text-center">
-            <Link to="/bilutvalg" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
-              Se hele bilutvalget <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
         </div>
       </section>
 
