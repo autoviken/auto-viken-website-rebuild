@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Shield, Award, Handshake, ArrowRight, Car } from "lucide-react";
-import { placeholderCars } from "@/lib/cars-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,8 +20,6 @@ const fadeUp = {
 };
 
 function HomePage() {
-  const featuredCars = placeholderCars.slice(0, 3);
-
   return (
     <div>
       {/* Hero */}
@@ -62,43 +59,24 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Featured Cars */}
+      {/* Featured Cars — live fra Autonet */}
       <section className="py-24">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-12 text-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mb-10 text-center">
             <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Utvalgte biler</h2>
-            <p className="mt-3 text-muted-foreground">Håndplukket kvalitet — klar for levering</p>
+            <p className="mt-3 text-muted-foreground">Direkte fra vårt lager — oppdatert i sanntid</p>
           </motion.div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {featuredCars.map((car, i) => (
-              <motion.div
-                key={car.id}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { ...fadeUp.visible.transition, delay: i * 0.1 } } }}
-              >
-                <Link to="/bilutvalg" className="group block overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-primary/30">
-                  <div className="aspect-[16/10] overflow-hidden">
-                    <img src={car.image} alt={`${car.make} ${car.model}`} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-                  </div>
-                  <div className="p-5">
-                    <p className="text-xs font-medium uppercase tracking-wider text-primary">{car.make}</p>
-                    <h3 className="mt-1 text-lg font-semibold">{car.model}</h3>
-                    <div className="mt-2 flex flex-wrap gap-3 text-xs text-muted-foreground">
-                      <span>{car.year}</span>
-                      <span>{car.mileage.toLocaleString("nb-NO")} km</span>
-                      <span>{car.fuel}</span>
-                    </div>
-                    <p className="mt-3 text-xl font-bold text-primary">{car.price.toLocaleString("nb-NO")} kr</p>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+          <div className="overflow-hidden rounded-xl border border-border bg-card">
+            <iframe
+              src="https://autovikenas.autonet.no"
+              title="Auto Viken utvalgte biler"
+              className="block w-full"
+              style={{ border: "none", height: "720px" }}
+            />
           </div>
-          <div className="mt-10 text-center">
+          <div className="mt-8 text-center">
             <Link to="/bilutvalg" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
-              Se alle biler <ArrowRight className="h-4 w-4" />
+              Se hele bilutvalget <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
