@@ -68,7 +68,8 @@
     "zod": "^3.24.2"
   },
 "devDependencies": {
-  "nitro": "..."
+  "nitro": "^2.10.4",
+  "@eslint/js": "^9.32.0"
 }
     "@eslint/js": "^9.32.0",
     "@lovable.dev/vite-tanstack-config": "^1.4.0",
