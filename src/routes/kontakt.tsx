@@ -120,8 +120,8 @@ function KontaktPage() {
                       <input required className="w-full rounded-md border border-input bg-secondary px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
                     </div>
                     <div>
-                      <label className="mb-1.5 block text-sm font-medium">Telefon</label>
-                      <input type="tel" className="w-full rounded-md border border-input bg-secondary px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
+                      <label className="mb-1.5 block text-sm font-medium">Telefon *</label>
+                      <input required type="tel" className="w-full rounded-md border border-input bg-secondary px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
                     </div>
                   </div>
                   <div>
