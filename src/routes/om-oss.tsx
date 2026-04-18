@@ -75,17 +75,18 @@ function OmOssPage() {
             <h2 className="text-3xl font-bold tracking-tight">Vår historie</h2>
             <div className="mt-8 space-y-6 text-muted-foreground leading-relaxed">
               <p>
-                Auto Viken ble etablert i 2003 av bilentusiaster med en felles drøm: å gjøre bruktbilkjøp 
-                til en positiv opplevelse. Vi startet i små lokaler, men vokste raskt takket være fornøyde 
-                kunder og et rykte for ærlighet og kvalitet.
+                Auto Viken ble startet av bilentusiaster med en felles ambisjon: å gjøre bruktbilkjøp 
+                til en trygg og positiv opplevelse. Det som begynte i det små, har utviklet seg 
+                gjennom fornøyde kunder og et sterkt fokus på ærlighet, kvalitet og god service.
               </p>
               <p>
-                I dag tilbyr vi et bredt utvalg av kvalitetsbiler — fra praktiske familiebiler til eksklusive 
-                premiumbiler. Vi håndterer også kommisjonssalg, der vi tar oss av hele salgsprosessen for deg.
+                I dag tilbyr vi et bredt utvalg av nøye utvalgte biler – fra praktiske familiebiler 
+                til eksklusive premiumbiler. Vi tilbyr også kommisjonssalg, hvor vi tar hånd om 
+                hele prosessen fra start til slutt.
               </p>
               <p>
-                Vår filosofi er enkel: hver kunde skal føle seg trygg og godt ivaretatt. Vi tar oss tid til 
-                å forstå dine behov, og finner den bilen som passer akkurat deg.
+                Vår filosofi er enkel: Du skal føle deg trygg og godt ivaretatt gjennom hele reisen. 
+                Vi lytter til dine behov og hjelper deg med å finne bilen som passer akkurat deg.
               </p>
             </div>
           </motion.div>
