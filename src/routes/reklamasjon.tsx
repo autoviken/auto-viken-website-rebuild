@@ -25,11 +25,41 @@ const fadeUp = {
 
 function ReklamasjonPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO: Kobles til e-post (reklamasjon@autoviken.no) når Domeneshop SMTP er konfigurert
-    setSubmitted(true);
+    setError(null);
+    setSubmitting(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    if (formData.get("botcheck")) {
+      setSubmitted(true);
+      setSubmitting(false);
+      return;
+    }
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData,
+      });
+      const data = (await res.json()) as { success: boolean; message?: string };
+      if (data.success) {
+        setSubmitted(true);
+        form.reset();
+      } else {
+        setError(data.message || "Noe gikk galt. Prøv igjen senere.");
+      }
+    } catch {
+      setError("Kunne ikke sende reklamasjonen. Sjekk internettforbindelsen og prøv igjen.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
