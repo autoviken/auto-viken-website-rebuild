@@ -1,10 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { CheckCircle, ArrowRight, MapPin, Clock, AlertCircle, Loader2 } from "lucide-react";
-
-// Web3Forms access key — bytt ut med din egen nøkkel fra https://web3forms.com
-const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
+import { CheckCircle, ArrowRight, MapPin, Clock } from "lucide-react";
 
 export const Route = createFileRoute("/kontakt")({
   head: () => ({
@@ -25,42 +22,10 @@ const fadeUp = {
 
 function KontaktPage() {
   const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setError(null);
-    setSubmitting(true);
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-
-    // Honeypot — antar spam hvis utfylt
-    if (formData.get("botcheck")) {
-      setSubmitted(true);
-      setSubmitting(false);
-      return;
-    }
-
-    try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: formData,
-      });
-      const data = (await res.json()) as { success: boolean; message?: string };
-      if (data.success) {
-        setSubmitted(true);
-        form.reset();
-      } else {
-        setError(data.message || "Noe gikk galt. Prøv igjen senere.");
-      }
-    } catch {
-      setError("Kunne ikke sende meldingen. Sjekk internettforbindelsen og prøv igjen.");
-    } finally {
-      setSubmitting(false);
-    }
+    setSubmitted(true);
   }
 
   return (
@@ -149,52 +114,33 @@ function KontaktPage() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="mt-8 space-y-5">
-                  {/* Web3Forms hidden fields */}
-                  <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
-                  <input type="hidden" name="subject" value="Ny henvendelse fra autoviken.no" />
-                  <input type="hidden" name="from_name" value="Auto Viken — Kontaktskjema" />
-                  <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
-
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
                       <label className="mb-1.5 block text-sm font-medium">Navn *</label>
-                      <input required name="name" maxLength={100} className="w-full rounded-md border border-input bg-secondary px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
+                      <input required className="w-full rounded-md border border-input bg-secondary px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
                     </div>
                     <div>
                       <label className="mb-1.5 block text-sm font-medium">Telefon *</label>
-                      <input required type="tel" name="phone" maxLength={30} className="w-full rounded-md border border-input bg-secondary px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
+                      <input required type="tel" className="w-full rounded-md border border-input bg-secondary px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
                     </div>
                   </div>
                   <div>
                     <label className="mb-1.5 block text-sm font-medium">E-post *</label>
-                    <input required type="email" name="email" maxLength={255} className="w-full rounded-md border border-input bg-secondary px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
+                    <input required type="email" className="w-full rounded-md border border-input bg-secondary px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
                   </div>
                   <div>
                     <label className="mb-1.5 block text-sm font-medium">Emne</label>
-                    <input name="user_subject" maxLength={150} className="w-full rounded-md border border-input bg-secondary px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
+                    <input className="w-full rounded-md border border-input bg-secondary px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
                   </div>
                   <div>
                     <label className="mb-1.5 block text-sm font-medium">Melding *</label>
-                    <textarea required name="message" rows={5} maxLength={2000} placeholder="Skriv din melding her..." className="w-full rounded-md border border-input bg-secondary px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
+                    <textarea required rows={5} placeholder="Skriv din melding her..." className="w-full rounded-md border border-input bg-secondary px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary" />
                   </div>
-
-                  {error && (
-                    <div className="flex items-start gap-3 rounded-md border border-destructive/30 bg-destructive/5 p-3 text-sm text-destructive">
-                      <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-                      <p>{error}</p>
-                    </div>
-                  )}
-
                   <button
                     type="submit"
-                    disabled={submitting}
-                    className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-60"
+                    className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
                   >
-                    {submitting ? (
-                      <>Sender... <Loader2 className="h-4 w-4 animate-spin" /></>
-                    ) : (
-                      <>Send melding <ArrowRight className="h-4 w-4" /></>
-                    )}
+                    Send melding <ArrowRight className="h-4 w-4" />
                   </button>
                 </form>
               )}
