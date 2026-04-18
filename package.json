@@ -67,7 +67,9 @@
     "vite-tsconfig-paths": "^6.0.2",
     "zod": "^3.24.2"
   },
-  "devDependencies": {
+"devDependencies": {
+  "nitro": "..."
+}
     "@eslint/js": "^9.32.0",
     "@lovable.dev/vite-tanstack-config": "^1.4.0",
     "@types/node": "^22.16.5",
