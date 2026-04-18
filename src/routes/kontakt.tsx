@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { CheckCircle, ArrowRight, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { CheckCircle, ArrowRight, MapPin, Clock } from "lucide-react";
 
 export const Route = createFileRoute("/kontakt")({
   head: () => ({
@@ -70,24 +70,6 @@ function KontaktPage() {
                   <div>
                     <p className="font-semibold">Adresse</p>
                     <p className="text-sm text-muted-foreground">Verpetveien 50, 1543 Vestby</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                    <Phone className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">Telefon</p>
-                    <a href="tel:+4764982450" className="text-sm text-muted-foreground hover:text-primary">+47 649 82 450</a>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                    <Mail className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">E-post</p>
-                    <a href="mailto:post@autoviken.no" className="text-sm text-muted-foreground hover:text-primary">post@autoviken.no</a>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
