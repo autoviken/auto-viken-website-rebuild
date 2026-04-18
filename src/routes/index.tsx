@@ -74,9 +74,9 @@ function HomePage() {
               <Link to="/bilutvalg" className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
                 Se bilutvalget <ArrowRight className="h-4 w-4" />
               </Link>
-              <a href="tel:+4764982450" className="inline-flex items-center gap-2 rounded-md border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-accent">
-                Ring oss
-              </a>
+              <Link to="/kontakt" className="inline-flex items-center gap-2 rounded-md border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-accent">
+                Kontakt oss
+              </Link>
             </div>
           </motion.div>
         </div>

@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Clock } from "lucide-react";
 import logo from "@/assets/auto-viken-logo.jpg";
 
 export function Footer() {
@@ -43,13 +43,10 @@ export function Footer() {
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 Verpetveien 50, 1543 Vestby
               </li>
-              <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 shrink-0 text-primary" />
-                <a href="tel:+4764982450" className="hover:text-primary">+47 649 82 450</a>
-              </li>
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 shrink-0 text-primary" />
-                <a href="mailto:post@autoviken.no" className="hover:text-primary">post@autoviken.no</a>
+              <li>
+                <Link to="/kontakt" className="font-medium text-primary hover:underline">
+                  Se kontaktinformasjon →
+                </Link>
               </li>
             </ul>
           </div>

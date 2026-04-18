@@ -131,11 +131,8 @@ function FinansieringPage() {
             <p className="mx-auto mt-3 max-w-md text-muted-foreground">
               Ta kontakt med oss for en uforpliktende finansieringssamtale.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <a href="tel:+4764982450" className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
-                Ring oss
-              </a>
-              <Link to="/kontakt" className="inline-flex items-center gap-2 rounded-md border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-accent">
+            <div className="mt-8 flex justify-center gap-4">
+              <Link to="/kontakt" className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
                 Send melding
               </Link>
             </div>
