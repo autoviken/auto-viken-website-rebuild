@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { CheckCircle, ArrowRight, MapPin, Clock } from "lucide-react";
+import { CheckCircle, ArrowRight, MapPin, Clock, AlertCircle, Loader2 } from "lucide-react";
+
+// Web3Forms access key — bytt ut med din egen nøkkel fra https://web3forms.com
+const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
 
 export const Route = createFileRoute("/kontakt")({
   head: () => ({
