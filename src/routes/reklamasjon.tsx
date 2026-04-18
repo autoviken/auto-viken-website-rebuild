@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { CheckCircle, ArrowRight, AlertCircle } from "lucide-react";
+import { CheckCircle, ArrowRight, AlertCircle, Loader2 } from "lucide-react";
+
+// Web3Forms access key — bytt ut med din egen nøkkel fra https://web3forms.com
+const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
 
 export const Route = createFileRoute("/reklamasjon")({
   head: () => ({
@@ -22,11 +25,41 @@ const fadeUp = {
 
 function ReklamasjonPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO: Kobles til e-post (reklamasjon@autoviken.no) når Domeneshop SMTP er konfigurert
-    setSubmitted(true);
+    setError(null);
+    setSubmitting(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    if (formData.get("botcheck")) {
+      setSubmitted(true);
+      setSubmitting(false);
+      return;
+    }
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData,
+      });
+      const data = (await res.json()) as { success: boolean; message?: string };
+      if (data.success) {
+        setSubmitted(true);
+        form.reset();
+      } else {
+        setError(data.message || "Noe gikk galt. Prøv igjen senere.");
+      }
+    } catch {
+      setError("Kunne ikke sende reklamasjonen. Sjekk internettforbindelsen og prøv igjen.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -70,6 +103,11 @@ function ReklamasjonPage() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Web3Forms hidden fields */}
+                <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+                <input type="hidden" name="subject" value="Ny reklamasjon fra autoviken.no" />
+                <input type="hidden" name="from_name" value="Auto Viken — Reklamasjonsskjema" />
+
                 {/* Personalia */}
                 <div>
                   <h2 className="mb-4 text-lg font-semibold">Dine opplysninger</h2>
@@ -233,15 +271,22 @@ function ReklamasjonPage() {
                   </div>
                 </div>
 
-                {/* Honeypot — skjult felt for spam-beskyttelse */}
+                {/* Honeypot — Web3Forms spam-beskyttelse */}
                 <input
-                  type="text"
-                  name="website"
+                  type="checkbox"
+                  name="botcheck"
                   tabIndex={-1}
                   autoComplete="off"
-                  className="absolute left-[-9999px] h-0 w-0 opacity-0"
+                  className="hidden"
                   aria-hidden="true"
                 />
+
+                {error && (
+                  <div className="flex items-start gap-3 rounded-md border border-destructive/30 bg-destructive/5 p-3 text-sm text-destructive">
+                    <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                    <p>{error}</p>
+                  </div>
+                )}
 
                 <div className="flex flex-col gap-3 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
                   <p className="text-xs text-muted-foreground">
@@ -249,9 +294,14 @@ function ReklamasjonPage() {
                   </p>
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
+                    disabled={submitting}
+                    className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-60"
                   >
-                    Send reklamasjon <ArrowRight className="h-4 w-4" />
+                    {submitting ? (
+                      <>Sender... <Loader2 className="h-4 w-4 animate-spin" /></>
+                    ) : (
+                      <>Send reklamasjon <ArrowRight className="h-4 w-4" /></>
+                    )}
                   </button>
                 </div>
               </form>
