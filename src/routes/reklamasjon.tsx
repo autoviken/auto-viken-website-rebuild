@@ -173,6 +173,7 @@ function ReklamasjonPage() {
                       <input
                         type="number"
                         name="km_kjop"
+                        placeholder="99000 km"
                         className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
                       />
                     </div>
@@ -182,6 +183,7 @@ function ReklamasjonPage() {
                     <input
                       type="number"
                       name="km_naa"
+                      placeholder="112229 km"
                       className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
                     />
                   </div>
