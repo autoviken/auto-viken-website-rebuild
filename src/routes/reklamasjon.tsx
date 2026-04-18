@@ -103,6 +103,11 @@ function ReklamasjonPage() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Web3Forms hidden fields */}
+                <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+                <input type="hidden" name="subject" value="Ny reklamasjon fra autoviken.no" />
+                <input type="hidden" name="from_name" value="Auto Viken — Reklamasjonsskjema" />
+
                 {/* Personalia */}
                 <div>
                   <h2 className="mb-4 text-lg font-semibold">Dine opplysninger</h2>
