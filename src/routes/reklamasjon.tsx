@@ -271,15 +271,22 @@ function ReklamasjonPage() {
                   </div>
                 </div>
 
-                {/* Honeypot — skjult felt for spam-beskyttelse */}
+                {/* Honeypot — Web3Forms spam-beskyttelse */}
                 <input
-                  type="text"
-                  name="website"
+                  type="checkbox"
+                  name="botcheck"
                   tabIndex={-1}
                   autoComplete="off"
-                  className="absolute left-[-9999px] h-0 w-0 opacity-0"
+                  className="hidden"
                   aria-hidden="true"
                 />
+
+                {error && (
+                  <div className="flex items-start gap-3 rounded-md border border-destructive/30 bg-destructive/5 p-3 text-sm text-destructive">
+                    <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                    <p>{error}</p>
+                  </div>
+                )}
 
                 <div className="flex flex-col gap-3 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
                   <p className="text-xs text-muted-foreground">
@@ -287,9 +294,14 @@ function ReklamasjonPage() {
                   </p>
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
+                    disabled={submitting}
+                    className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-60"
                   >
-                    Send reklamasjon <ArrowRight className="h-4 w-4" />
+                    {submitting ? (
+                      <>Sender... <Loader2 className="h-4 w-4 animate-spin" /></>
+                    ) : (
+                      <>Send reklamasjon <ArrowRight className="h-4 w-4" /></>
+                    )}
                   </button>
                 </div>
               </form>
