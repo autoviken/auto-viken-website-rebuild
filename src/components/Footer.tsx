@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { MapPin, Clock } from "lucide-react";
-import logo from "@/assets/auto-viken-logo.jpg";
+import logo from "../assets/auto-viken-logo.jpg";
 
 export function Footer() {
   return (
