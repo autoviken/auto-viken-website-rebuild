@@ -38,6 +38,20 @@ function KontaktPage() {
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
               Vi svarer gjerne på spørsmål om biler, finansiering eller andre henvendelser.
             </p>
+            <div className="mt-8 space-y-3 text-base leading-relaxed text-muted-foreground">
+              <p>
+                <span className="font-semibold text-foreground">Reklamasjonsskjema:</span> For saker som gjelder reklamasjon.
+              </p>
+              <p>
+                Velg riktig skjema og fyll ut feltene nedenfor – vårt dedikerte kundeserviceteam vil ta kontakt så snart som mulig.
+              </p>
+              <p>Vi ser frem til å høre fra deg!</p>
+              <p>
+                <a href="/reklamasjon" className="font-semibold text-primary hover:underline">
+                  Reklamasjonsskjema →
+                </a>
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
