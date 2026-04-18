@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SelgDinBilRouteImport } from './routes/selg-din-bil'
+import { Route as ReklamasjonRouteImport } from './routes/reklamasjon'
 import { Route as OmOssRouteImport } from './routes/om-oss'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as FinansieringRouteImport } from './routes/finansiering'
@@ -19,6 +20,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const SelgDinBilRoute = SelgDinBilRouteImport.update({
   id: '/selg-din-bil',
   path: '/selg-din-bil',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReklamasjonRoute = ReklamasjonRouteImport.update({
+  id: '/reklamasjon',
+  path: '/reklamasjon',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OmOssRoute = OmOssRouteImport.update({
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/finansiering': typeof FinansieringRoute
   '/kontakt': typeof KontaktRoute
   '/om-oss': typeof OmOssRoute
+  '/reklamasjon': typeof ReklamasjonRoute
   '/selg-din-bil': typeof SelgDinBilRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/finansiering': typeof FinansieringRoute
   '/kontakt': typeof KontaktRoute
   '/om-oss': typeof OmOssRoute
+  '/reklamasjon': typeof ReklamasjonRoute
   '/selg-din-bil': typeof SelgDinBilRoute
 }
 export interface FileRoutesById {
@@ -70,6 +78,7 @@ export interface FileRoutesById {
   '/finansiering': typeof FinansieringRoute
   '/kontakt': typeof KontaktRoute
   '/om-oss': typeof OmOssRoute
+  '/reklamasjon': typeof ReklamasjonRoute
   '/selg-din-bil': typeof SelgDinBilRoute
 }
 export interface FileRouteTypes {
@@ -80,6 +89,7 @@ export interface FileRouteTypes {
     | '/finansiering'
     | '/kontakt'
     | '/om-oss'
+    | '/reklamasjon'
     | '/selg-din-bil'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -88,6 +98,7 @@ export interface FileRouteTypes {
     | '/finansiering'
     | '/kontakt'
     | '/om-oss'
+    | '/reklamasjon'
     | '/selg-din-bil'
   id:
     | '__root__'
@@ -96,6 +107,7 @@ export interface FileRouteTypes {
     | '/finansiering'
     | '/kontakt'
     | '/om-oss'
+    | '/reklamasjon'
     | '/selg-din-bil'
   fileRoutesById: FileRoutesById
 }
@@ -105,6 +117,7 @@ export interface RootRouteChildren {
   FinansieringRoute: typeof FinansieringRoute
   KontaktRoute: typeof KontaktRoute
   OmOssRoute: typeof OmOssRoute
+  ReklamasjonRoute: typeof ReklamasjonRoute
   SelgDinBilRoute: typeof SelgDinBilRoute
 }
 
@@ -115,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/selg-din-bil'
       fullPath: '/selg-din-bil'
       preLoaderRoute: typeof SelgDinBilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reklamasjon': {
+      id: '/reklamasjon'
+      path: '/reklamasjon'
+      fullPath: '/reklamasjon'
+      preLoaderRoute: typeof ReklamasjonRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/om-oss': {
@@ -161,8 +181,18 @@ const rootRouteChildren: RootRouteChildren = {
   FinansieringRoute: FinansieringRoute,
   KontaktRoute: KontaktRoute,
   OmOssRoute: OmOssRoute,
+  ReklamasjonRoute: ReklamasjonRoute,
   SelgDinBilRoute: SelgDinBilRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
