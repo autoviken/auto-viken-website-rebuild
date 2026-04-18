@@ -79,7 +79,7 @@ function KontaktPage() {
                   <div>
                     <p className="font-semibold">Åpningstider</p>
                     <div className="text-sm text-muted-foreground">
-                      <p>Mandag–Fredag: 09:00–17:00</p>
+                      <p>Mandag–Fredag: 10:00–18:00</p>
                       <p>Lørdag: 10:00–15:00</p>
                       <p>Søndag: Stengt</p>
                     </div>
