@@ -24,9 +24,16 @@ function HomePage() {
     <div>
       {/* Hero */}
       <section className="relative flex min-h-[85vh] items-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=80')" }}
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src="https://cdn.coverr.co/videos/coverr-driving-a-luxury-car-at-night-2633/1080p.mp4"
+          poster="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=80"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-8">
