@@ -1,60 +1,29 @@
 
-# Auto Viken AS — Ny Nettside
+Mål: Fjerne det gamle hero-bildet som fortsatt vises på forsiden og sørge for at banneret faktisk oppleves som video.
 
-## Design
-Modern & premium bilforhandler-design med mørke toner, elegante animasjoner og luksusfølelse. Norsk språk gjennomgående.
+Det jeg fant:
+- Forsiden bruker allerede en `<video>` i hero-seksjonen under “Din neste drømmebil venter”.
+- Men videoen har fortsatt `poster="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?..."`
+- Det betyr at det gamle bildet fortsatt vises før videoen starter, og i noen tilfeller hvis videoen ikke lastes/avspilles med en gang.
 
-## Sider
+Plan:
+1. Oppdatere hero-seksjonen i `src/routes/index.tsx`
+   - Fjerne `poster`-bildet helt, eller erstatte det med et nytt bilde som matcher videoen.
+   - Beholde video som bakgrunn med `autoPlay`, `muted`, `loop` og `playsInline`.
 
-### 1. Hjem (/)
-- Fullskjerm hero med video/bilde-bakgrunn og slagord "Drømmebiler" 
-- Utvalgte biler-seksjon (fra Autonet når integrert)
-- Kort om Auto Viken med CTA
-- Hvorfor velge oss — ikoner/kort med nøkkelverdier
-- CTA-banner for å selge bil / kontakt
+2. Gjøre video-visningen mer robust
+   - Legge til en mørk bakgrunn under videoen slik at heroen ikke “hopper” visuelt mens videoen laster.
+   - Sikre at overlayen fortsatt gjør teksten lett å lese.
 
-### 2. Bilutvalg (/bilutvalg)
-- Bil-grid med kort (bilde, merke, modell, årsmodell, km, pris)
-- Filter: merke, prisrange, årsmodell, drivstoff
-- Søkefelt
-- Detaljside per bil med bildegalleri og spesifikasjoner
-- **Autonet API-integrasjon** via server function (krever API-nøkkel)
+3. Hindre at gammel versjon henger igjen visuelt
+   - Hvis nødvendig, bytte videokilde eller legge til en liten cache-busting-endring i media-URL-en hvis nettleseren viser gammel tilstand.
+   - Kontrollere at det ikke finnes andre hero-bakgrunner på forsiden som overlapper.
 
-### 3. Om oss (/om-oss)
-- Bedriftens historie og verdier
-- Teamet — bilder og roller
-- Adresse: Verpetveien 50, 1543 Vestby
+4. Verifisering etter endring
+   - Sjekke at forsiden ikke lenger viser det gamle Unsplash-bildet.
+   - Bekrefte at heroen viser video på desktop og mobilvisning, og at fallback fortsatt ser ryddig ut dersom video ikke starter umiddelbart.
 
-### 4. Selg din bil (/selg-din-bil)
-- Infoseksjon om kommisjonssalg
-- Skjema: kontaktinfo, bilinfo (merke, modell, årsmodell, km, tilstand)
-- Fordeler ved å selge gjennom Auto Viken
-
-### 5. Finansiering (/finansiering)
-- Finansieringsalternativer og partnerinfo
-- Enkel kalkulator eller CTA for å ta kontakt
-- Forsikringsinfo
-
-### 6. Reklamasjon (/reklamasjon)
-- Reklamasjonsskjema med felt for ordrenr, beskrivelse, bilder
-- Info om prosessen og rettigheter
-
-### 7. Kundeomtaler (/kundeomtaler)
-- Kundevurderinger med stjerner, navn og tekst
-- Statisk innhold til å begynne med (kan kobles til Google Reviews senere)
-
-### 8. Kontakt oss (/kontakt)
-- Kontaktskjema (navn, e-post, telefon, melding)
-- Kart (Google Maps embed) — Verpetveien 50, 1543 Vestby
-- Åpningstider, telefon, e-post
-
-## Felles elementer
-- Premium header med logo-plass og navigasjon (mobilvennlig hamburger)
-- Footer med kontaktinfo, lenker, sosiale medier
-- Smooth scroll-animasjoner
-
-## Autonet-integrasjon
-- Server function som henter bildata fra Autonet API
-- Du vil bli bedt om å oppgi Autonet API-nøkkel som secret
-- Biler vises i grid med filtrering og detaljsider
-- Fallback til placeholder-data dersom API ikke er tilkoblet ennå
+Tekniske detaljer:
+- Fil: `src/routes/index.tsx`
+- Sannsynlig årsak: `poster`-attributtet på videoen peker fortsatt til det gamle bildet.
+- Mest sannsynlige løsning: fjerne `poster` eller erstatte den med riktig fallback som ikke viser det gamle motivet.
