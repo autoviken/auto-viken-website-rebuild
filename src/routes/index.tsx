@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Shield, Award, Handshake, ArrowRight, Car } from "lucide-react";
+import heroVideo from "@/assets/hero-video.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -26,7 +27,7 @@ function HomePage() {
       <section className="relative flex min-h-[85vh] items-center overflow-hidden bg-background">
         <video
           className="absolute inset-0 h-full w-full object-cover"
-          src="https://cdn.coverr.co/videos/coverr-driving-a-luxury-car-at-night-2633/1080p.mp4"
+          src={heroVideo.url}
           autoPlay
           muted
           loop
