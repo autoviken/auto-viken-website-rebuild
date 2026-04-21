@@ -23,16 +23,15 @@ function HomePage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative flex min-h-[85vh] items-center overflow-hidden">
+      <section className="relative flex min-h-[85vh] items-center overflow-hidden bg-background">
         <video
           className="absolute inset-0 h-full w-full object-cover"
           src="https://cdn.coverr.co/videos/coverr-driving-a-luxury-car-at-night-2633/1080p.mp4"
-          poster="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=80"
           autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
